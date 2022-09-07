@@ -39,7 +39,11 @@ public class Television {
   }
 
   public void setBrand(String brand) {
-    this.brand = brand;
+    if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Sony") || brand.equals("Toshiba")) {
+      this.brand = brand;
+    } else {
+      System.out.println(brand + " is invalid; must be LG, Sony, or Toshiba");
+    }
   }
 
   public int getVolume() {
