@@ -13,6 +13,7 @@ public class TelevisionValidationTest {
 //    System.out.println(tv);           // should still have volume 100, from there
 
     Television tv = new Television();
+
     tv.setBrand("Samsung");           // should stick
     System.out.println(tv);           // brand should be Samsung
 
