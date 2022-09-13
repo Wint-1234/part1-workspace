@@ -11,7 +11,6 @@ package com.entertainment.client;
 import com.entertainment.DisplayType;
 import com.entertainment.Television;
 import com.entertainment.util.Useful;
-import com.entertainment.util.Useful;
 
 /**
  * Tester class, or "client" class, with main().

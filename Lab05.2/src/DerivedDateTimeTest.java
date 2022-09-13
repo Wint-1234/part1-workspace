@@ -26,12 +26,12 @@ class DerivedDateTimeTest {
      * To run one test method at a time, uncomment the call to the one you want to execute.
      */
     public static void main(String[] args) {
-        // testPresidentsFirst100Days();
-        // testPopularBirthdays();
-        // testEarlyRetirement();
-        // testLaborDay();
-        // testElectionDay();
-        // testAnniversary();
+         testPresidentsFirst100Days();
+         testPopularBirthdays();
+         testEarlyRetirement();
+         testLaborDay();
+         testElectionDay();
+         testAnniversary();
     }
 
     /**
@@ -41,7 +41,8 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testPresidentsFirst100Days() {
-        // TODO: 9/12/22
+        LocalDate inaugurationDay = LocalDate.of(2017, Month.JANUARY, 20);
+        System.out.println(inaugurationDay.plusDays(100));
     }
 
     /**
@@ -69,7 +70,6 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testEarlyRetirement() {
-        // TODO
         LocalDate birthday = LocalDate.of(1994, 07, 19);
         System.out.println(birthday.plusYears(59));
     }
@@ -82,6 +82,9 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testLaborDay() {
+        LocalDate birthday = LocalDate.of(1994, 07, 19);
+        LocalDate laborDay = birthday.withMonth(11).with(firstInMonth(DayOfWeek.MONDAY));
+        System.out.println(laborDay);
     }
 
     /**
@@ -91,7 +94,9 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testElectionDay() {
-        //LocalDate electionDay = LocalDate.of(2024, 11, 1).
+        LocalDate date = LocalDate.of(2024, 11, 1);
+        LocalDate electionDay = date.with(firstInMonth(DayOfWeek.MONDAY)).with(next(DayOfWeek.TUESDAY));
+        System.out.println(electionDay);
     }
 
     /**
@@ -103,5 +108,9 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testAnniversary() {
+        LocalDate weddingDate = LocalDate.of(1969, 6, 6);
+        LocalDate anniversaryDate = weddingDate.plusYears(50);
+        LocalDate partyDate = anniversaryDate.with(nextOrSame(DayOfWeek.SATURDAY));
+        System.out.println(partyDate);
     }
 }
