@@ -8,14 +8,22 @@
 
 package com.data.io;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+
 public class PersonDataClient {
 
     /**
      * To run one method at a time, uncomment the call to the one you want to execute.
      */
     public static void main(String[] args) {
-        // writeData();
-        // readData();
+        writeData();
+        readData();
     }
 
     /**
@@ -29,7 +37,17 @@ public class PersonDataClient {
      * Use a try-with-resources to initialize the stream and auto-close it.
      */
     private static void writeData() {
-        // TODO
+        try (DataOutputStream out =
+            new DataOutputStream(new FileOutputStream("person.dat"))) {
+
+            out.writeUTF("Winton Ebanks");
+            out.writeInt(28);
+            out.writeDouble(10);
+            out.writeBoolean(true);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -42,6 +60,20 @@ public class PersonDataClient {
      * Use a try-with-resources to initialize the stream and auto-close it.
      */
     private static void readData() {
-        // TODO
+        try (DataInputStream in = new DataInputStream(new FileInputStream("person.dat"))) {
+
+            String name = in.readUTF();
+            int age = in.readInt();
+            double shoeSize = in.readDouble();
+            boolean isMarried = in.readBoolean();
+//          System.out.println("Name= " + name + "\n"
+//                + "Age= " + age + "\n" + "Shoe size= " + shoeSize
+//                + "\n" + "Is married= " + isMarried);
+            System.out.printf("Name %s, age= %s, shoe size= %.1f, married= %s%n",
+                name, age, shoeSize, isMarried);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
